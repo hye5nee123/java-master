@@ -59,12 +59,15 @@ public class StudentApp2 {
 		
 		for(int i =0;i<students.length;i++) {
 			//조건추가. => 변경점수 입력.
-			/**if (name.equals(students){
-				System.out.println("수정 점수 입력");
-				//students.score = Integer.parseInt(scn.nextLine());
-			}*/
+			*if (name.equals(students[i].name){
+				System.out.print("수정 점수 입력");
+				students.score = scn.nextLine();
+				sxists = true;
+			}
 			//찾는 이름 없음
-			System.out.println("찾는 이름이 없습니다.");
+			if(!exists) {
+				System.out.println("찾는 이름이 없습니다!");
+			}
 		}//end of modify
 	}//end of modify
 	public static void main(String[] args) {
