@@ -66,7 +66,7 @@ public class StudentApp2 {
 			//찾는 이름 없음
 			System.out.println("찾는 이름이 없습니다.");
 		}//end of modify
-	}end of modify
+	}//end of modify
 	public static void main(String[] args) {
 
 
