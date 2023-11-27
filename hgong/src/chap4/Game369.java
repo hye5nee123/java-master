@@ -15,7 +15,7 @@ public class Game369 {
 				
 			}
 		}*/
-		// for
+		// for Ãß°¡
 		for(int i =1;i<=50;i++) {
 			for(int a = 1;a<=i;a++){
 				System.out.println("*");
