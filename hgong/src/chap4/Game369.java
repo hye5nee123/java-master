@@ -42,10 +42,10 @@ public class Game369 {
 			
 			if(1%10 == 0) System.out.println();
 		//갯수가 1 -> ♥
-		//갯수가 2 -> ♥♥
+		//갯수가 2 -> ♥♥dd
 
 	   }
-		
+		/for
 		// https://hhaeri.tistory.com/53*/
 		//동전교환
 		
