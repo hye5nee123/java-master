@@ -1,10 +1,11 @@
-/**package todo;
+package todo;
 
 import java.util.Scanner;
 
 public class BoardApp {
 public static void main(String[] args) {
 	boolean run = true;
+	Board[] boards = new Board[100];
 	Scanner scn = new Scanner(System.in) {
 		BoardExe exe = new BoardExe();
 while(run) {
@@ -32,12 +33,34 @@ while(run) {
 		}
 		System.out.println("저장 되었습니다.");
 		break;
-	case 2 :
-		for(Board )
-		
-		
-		}	
+	case 2 ://목록보기
+		for(Board brd : exe.getBolist()) {
+			if(brd != null) {
+				brd.showInfo();
+			}
+		}
+		for(int i = 0;i < students.length;i++) {
+			if(boards[i] != null ) {
+				boards[i].showInfo();
+			}
+		}
+		break;
+	case 3: //단건조회
+		System.out.println("조회할 게시판 번호 입력>>");
+		no =scn.nextLine();
+		Board brd =exe.getBoNO(no);
+		if(brd !=null) {
+			brd.showInfo();
+		}else {
+			System.out.println("존재하지 않는 정보");
+		}
+		break;
+	case 6: 
+		System.out.ptintln("프로그램을 종료합니다")
+		run =false;
+		}
+	
 	}
 
 
-}*/
+}
