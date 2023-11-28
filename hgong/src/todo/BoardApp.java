@@ -2,7 +2,7 @@
 
 import java.util.Scanner;
 
-public class BoardApp {
+public class BoardApp {//
 public static void main(String[] args) {
 	boolean run = true;
 	Scanner scn = new Scanner(System.in) {
