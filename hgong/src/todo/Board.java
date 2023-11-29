@@ -7,7 +7,7 @@ public class Board {
 	private String boWriter;
 	private String boNae;
 	private String boIlsi;
-	
+	//나도 변경 했습니다.
 	Board(){
 		
 	}
