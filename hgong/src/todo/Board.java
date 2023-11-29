@@ -8,6 +8,8 @@ public class Board {
 	private String boNae;
 	private String boIlsi;
 	
+	//이 부분이 변경 되었습니다.
+	
 	Board(){
 		
 	}

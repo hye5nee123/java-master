@@ -2,7 +2,7 @@ package todo;
 
 import java.util.Scanner;
 
-public class BoardApp {//
+public class BoardApp {
 public static void main(String[] args) {
 	boolean run = true;
 	Board[] boards = new Board[100];
@@ -59,8 +59,8 @@ while(run) {
 		System.out.ptintln("프로그램을 종료합니다")
 		run =false;
 		}
-	
-	}
+		
+}
 
 
 }

@@ -12,7 +12,7 @@ public class StudentApp {
 		try (Scanner scn = new Scanner(System.in)) {
 			StudentExe exe = new StudentExe();
 			while(run) {
-				System.out.println("1.동록 2.목록 3.단건조회 4.수정 5.삭제 6.종료");
+				System.out.println("1.등록 2.목록 3.단건조회 4.수정 5.삭제 6.종료");
 				int menu = Integer.parseInt(scn.nextLine()); //문자열 값 정수로
 				
 				switch(menu) {
@@ -41,7 +41,7 @@ public class StudentApp {
 					} else {
 						System.out.println("저장 중 오류 발생!");
 					}
-					System.out.println("저장 되었습니다.");
+					//System.out.println("저장 되었습니다.");
 					break;
 				case 2: //목록보기
 					for(Student stdnt : exe.getStudentList()) {
