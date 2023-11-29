@@ -6,6 +6,7 @@ public class Member {
 	private String memberName;
 	private String phone;
 	private String gender; //Men or Women => M, W
+	private String passwd;
 	
 	//생성자 :필드의 초기값 지정.
 	//기본 생성자 컴파일러가 생성.

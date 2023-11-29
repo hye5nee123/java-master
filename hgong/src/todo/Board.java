@@ -1,62 +1,74 @@
 package todo;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Board {
-
-	private int boNO;
-	private String boJemok;
-	private String boWriter;
-	private String boNae;
-	private String boIlsi;
-
+	//데이터값을 넘겨주는 매개
 	
-
-	
-
-	Board(){
+	private int boardNum;
+	private String boardHead;
+	private String boardWho;
+	private String boardCon;
+	private String boardDt;
+	public Board(int boardNum, String boardHead, String boarWho, String boardCon) {
+		Date today = new Date();
 		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		
+		this.boardNum = boardNum;
+		this.boardHead = boardHead;
+		this.boardWho = boarWho;
+		this.boardCon = boardCon;
+		this.boardDt = sdf.format(today);
 	}
-	Board(int boNO,String boJemok, String bookWriter,String bookNae,String bookIlsi){
-		this.boNO = boNO;
-		this.boJemok = boJemok;
-		this.boWriter = boWriter;
-		this.boNae = boNae;
-		this.boIlsi = boIlsi;
+	public Board(int boardNum, String boardHead, String boarWho, String boardCon, String boardDt) {
+		this.boardNum = boardNum;
+		this.boardHead = boardHead;
+		this.boardWho = boarWho;
+		this.boardCon = boardCon;
+		this.boardDt = boardDt;
 	}
-	//메소드 기능
-	void showInfo() {
-		System.out.println("게시판 번호는"+boNO+"이고 제목은"+boJemok+"작성자는"+boWriter+"이고 내용은"+boNae+"이고 작성시간은"+boIlsi);
+	String showInfo() {
+		return boardNum + "." + boardHead +"( "+boardWho+")"+boardDt;
 	}
-	//setter
-	void setBoNO(int boNO) {
-		this.boNO = boNO;
+	String showDetailInfo() {
+		String result = "번호: " +boardNum+"번 \n" +"제목: "+boardHead;
+		result += "\n작성자: " +boardWho;
+		result += "\n내용: " +boardCon;
+		result += "\n일시: " +boardDt;
+		return result;
 	}
-	void setBoJemok(String boJemok ) {
-		this.boJemok = boJemok;
+	void setBN(int boardNum) {
+		this.boardNum = boardNum;
 	}
-	void setBoWriter(String boWriter) {
-		this.boWriter = boWriter;
+	void setBH(String boardHead) {
+		this.boardHead = boardHead;
 	}
-	void setBoNae(String boNae) {
-		this.boNae = boNae;
+	void setBW(String boardWho) {
+		this.boardWho = boardWho;
 	}
-	void setBoIlsi(String boIlsi) {
-		this.boIlsi =boIlsi;
+	void setBC(String boardCon) {
+		this.boardCon = boardCon;
 	}
-	//getter
-	int getBoNO() {
-		return boNO;
+	void setBDT(String boardDt) {
+		this.boardDt = boardDt;
 	}
-	String getJemok () {
-		return boJemok;
+	
+	int getBN() {
+		return boardNum;
 	}
-	String getBoWriter() {
-		return boWriter;
+	String getBH() {
+		return boardHead;
 	}
-	String getBoNae() {
-		return boNae;
+	String getBW() {
+		return boardWho;
 	}
-	String getBoIlsi() {
-		return boIlsi;
+	String getBC() {
+		return boardCon;
 	}
-				
-}
+	String getBDT() {
+		return boardDt;
+	}
+
+}	
