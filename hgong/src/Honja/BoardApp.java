@@ -7,14 +7,15 @@ import Chap6.UserExe;
 
 public class BoardApp {
 	static BoardExe exe = new BoardExe();
+
 	public static void main(String[] args) {
-		//필드
+		// 필드
 		Scanner scn = new Scanner(System.in);
 		boolean run = true;
 		String id = null;
-		
+
 		UserExe uexe = new UserExe();
-		//uexe가 실체
+		// uexe가 실체
 		while (true) {
 			System.out.println("id를 입력>>");
 			id = scn.nextLine();
@@ -32,7 +33,14 @@ public class BoardApp {
 
 		while (run) {
 			System.out.println("1. 등록 2. 목록 3. 상세조회 4.수정 5. 삭제 6. 종료");
-			int menu = Integer.parseInt(scn.nextLine());
+
+			int menu = 0;
+			try {
+				menu = Integer.parseInt(scn.nextLine());
+			} catch (NumberFormatException e) {
+				System.out.println("정확한 메뉴를 선택하세요");
+				continue;
+			}
 
 			switch (menu) {
 			case 1:
@@ -65,8 +73,19 @@ public class BoardApp {
 				break;
 
 			case 3:
-				System.out.println("글번호 입력");
-				int no = Integer.parseInt(scn.nextLine());
+				int no = 0;
+				while (true) {
+					System.out.println("글번호 입력");
+					try {
+						no = Integer.parseInt(scn.nextLine());
+						break;
+						/**break 주석처리 하면 result로 못 가서 unreachable~~에러
+						제일 상위 에러 처리 기법은 Exception*/
+					} catch (Exception cute) {
+						System.out.println("글번호를 잘못 선택했습니다.");
+					}
+				}
+
 				Board result = exe.getBoard(no);
 				if (result != null) {
 					System.out.println(result.showDetailInfo());

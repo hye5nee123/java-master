@@ -49,6 +49,7 @@ public class FriendApp {
 			System.out.println("전공 >>>");
 			String major = scn.nextLine();
 			friend = new UnivFriend(name, phone, univ, major);
+			//자식클래스는 부모클래스에게 자동 형변환 ㄱㄴ
 
 		} else if (subMenu == 3) {
 			// case 3: (이름, 연락처,)회사,부서
