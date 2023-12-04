@@ -14,7 +14,7 @@ public class Student {
 		this.studNo = studNo;
 		this.studName = studName;
 		this.engScore = engScore;
-		this.matScore = matScore;
+		this.matScore = matScore; 
 	}
 	//메소드 기능
 	void showInfo() {
