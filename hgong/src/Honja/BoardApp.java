@@ -16,19 +16,6 @@ public class BoardApp {
 
 		UserExe uexe = new UserExe();
 		// uexe가 실체
-		while (true) {
-			System.out.println("id를 입력>>");
-			id = scn.nextLine();
-			System.out.println("pw를 입력>>");
-			String pw = scn.nextLine();
-			User user = uexe.logIn(id, pw);
-			if (user != null) {
-				System.out.println(user.getUserName() + "환영합니다!");
-				break;
-			} else {
-				System.out.println("id와 pw를 확인하세요");
-			}
-		}
 		exe.initData();
 
 		while (run) {
