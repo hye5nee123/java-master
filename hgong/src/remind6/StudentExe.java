@@ -39,7 +39,7 @@ public class StudentExe {
 			}
 		}
 		return null;
-	
+	}
 
 	// 수정.
 	boolean modifyStudent(String no, int eng, int mat) {

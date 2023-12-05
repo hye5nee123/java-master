@@ -19,6 +19,7 @@ public class Student {
 	}
 
 	// 메소드
+	//잘 이해안감 
 	void showInfo() {
 		System.out.println("학생 번호는 " + studNo + "이고 이름은 " + studName + "이고 영어 점수는" + engScore + "수학 점수는" + matScore);
 	}

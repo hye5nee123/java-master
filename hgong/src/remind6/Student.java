@@ -6,7 +6,7 @@ public class Student {
 	private String studName;
 	private int engScore;
 	private int matScore;
-	
+	//필드 초기화 
 	Student(){
 		
 	}

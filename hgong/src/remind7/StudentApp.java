@@ -30,7 +30,9 @@ public class StudentApp {
 				}
 				break;
 			case 2: // 목록보기
+				arrayList<student> stdAry = exe.getStudent(no);
 				for (Student stdnt : exe.getStudentList()) {
+					//list가 반환해주는 건 Arraylist
 					if (stdnt != null) {
 						stdnt.showInfo();
 					}
@@ -43,15 +45,9 @@ public class StudentApp {
 				break;
 			case 3:// 단건 조회
 				System.out.println("조회할 학생 번호 입력");
-				no = scn.nextLine();
-				Student stnt = exe.getStudent(no);
-				if (stnt != null) {
-					stnt.showInfo();
-				} else {
-					System.out.println("존재하지 않는 정보");
-				}
+			
 				break;
-			case 4: // 수정
+			case 4: // 수정.
 				System.out.println("조회할 학생 번호 입력>>");
 				no = scn.nextLine();
 				System.out.println("영어점수 입력>>");

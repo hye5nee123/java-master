@@ -4,11 +4,12 @@ import java.util.Scanner;
 
 import Chap6.User;
 import Chap6.UserExe;
-import todo111.BoardExe1;
+//import todo111.BoardExe1;
 
 // M(odel) V(iew) C(ontrol)
 public class BoardApp { // control 역할
 	
+	static BoardExe exe = new BoardExe();
 	private Scanner scn = new Scanner(System.in);
 	private String id = null;
 	//생성자
@@ -58,7 +59,6 @@ public class BoardApp { // control 역할
 		}
 	}// end of boardList
 
-	static BoardExe exe = new BoardExe();
 
 	private void getBoard() {
 		System.out.println("글번호 입력");
@@ -173,7 +173,7 @@ public class BoardApp { // control 역할
 		System.out.println("--------------------");
 		for (Board brd : boardAry) {
 			// 5번 반복
-			if (brd != null)
+			if (brd != null) {
 				System.out.println(brd.showInfo());
 		}
 		// 전체페이지 계산하고 출력.

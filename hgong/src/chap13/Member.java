@@ -16,4 +16,11 @@ public class Member {
 		this.memberName = memberName;
 		this.point = point;
 	}
+
+	// hashCode , equsals 정의하는 지에 따라서 동일객체.
+	
+/**	@Override
+	public int hashCode() {
+		return super.hashCode();
+	}*/
 }
