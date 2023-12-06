@@ -41,10 +41,13 @@ public class Emp {
 		System.out.println(
 				"직원 번호는" + empNo + "이고 이름은" + empName + "이고 번호는" + empTel + "이고 입사 일자는" + empDt + "이고 월급은" + empMoney);
 	}
-	String showDetailInfo() {
-		String result = "사번" + empNo +"번 \n " + "이름:" +empName;
-		result += "\n"
-	}
+
+	/**String showDetailInfo() {
+		String result = "사번" + empNo + "번 \n " + "월급:" + empMoney;
+		result += "\n 전화번호" + empTel;
+		result += "\n 입사일자" +empDt;
+		result += "\n 이름" + empName;
+	}*/
 
 	// setter
 	void setEmpNo(int empNo) {
