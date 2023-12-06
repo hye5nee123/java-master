@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 import Testyeonsueb.EmpExe;
 
-public class EmpApp {
+public class ProductApp {
 
 	public static void main(String[] args) {
 
