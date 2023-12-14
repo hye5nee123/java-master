@@ -1,4 +1,4 @@
-package remind6;
+package todo.p20231214;
 
 import java.util.Scanner;
 

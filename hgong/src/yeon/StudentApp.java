@@ -1,4 +1,4 @@
-package remind6;
+package yeon;
 
 import java.util.Scanner;
 

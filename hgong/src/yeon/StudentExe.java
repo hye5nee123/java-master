@@ -1,4 +1,4 @@
-package remind6;
+package yeon;
 //저장공간: 배열
 
 // 추가/수성/삭제/목록/단건조회

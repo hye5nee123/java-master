@@ -1,4 +1,4 @@
-package remind6;
+package todo.p20231214;
 //외부에서 접근 가능한 퍼블릭 클래스 생성
 public class Student {
 //필드에 학생들 속성 정의
