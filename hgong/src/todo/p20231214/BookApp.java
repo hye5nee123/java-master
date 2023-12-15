@@ -10,7 +10,7 @@ public class BookApp {
 
 		Scanner scn = new Scanner(System.in);
 		BookExe exe = new BookExe();
-		BookDAO dao = new BookDAO();
+		BOOKDAO dao = new BOOKDAO();
 
 		while (run) {
 			System.out.println("1.등록 2.목록 3.단건조회 4.수정 5.삭제 6.종료");
