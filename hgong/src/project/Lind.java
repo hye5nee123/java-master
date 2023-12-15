@@ -1,7 +1,10 @@
 package project;
 
+import lombok.Data;
+
 public class Lind {
-	@lombok
+	
+	
 	private int won_no;
 	private String won_id;
 	private String won_pw;
