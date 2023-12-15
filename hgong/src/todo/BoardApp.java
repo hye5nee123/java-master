@@ -3,8 +3,6 @@ package todo;
 import java.util.Scanner;
 
 import Chap6.User;
-import Chap6.UserExe;
-//import todo111.BoardExe1;
 
 // M(odel) V(iew) C(ontrol)
 public class BoardApp { // control 역할
@@ -38,9 +36,9 @@ public class BoardApp { // control 역할
 		String contents = scn.nextLine();
 		System.out.println("일시 입력 >>");
 		String dateTime = scn.nextLine();
-		
+
 		Board board = new Board(exe.getSequence(), head, id, contents, dateTime);
-		
+
 		if (exe.addBoard(board)) {
 			System.out.println("입력 성공");
 		} else {
@@ -123,7 +121,8 @@ public class BoardApp { // control 역할
 		} else {
 			System.out.println("id와 pw를 확인하세요");
 		}
-	}exe.initData();
+	}
+	break;
 
 	while(run)
 	{

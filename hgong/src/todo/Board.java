@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import lombok.Data;
 
-@Data //(ctrl shift o = import 파일 저장)
+@Data // (ctrl shift o = import 파일 저장)
 public class Board {
 	// 데이터를 담아놓는 용도
 	private int boardNum;
@@ -45,7 +45,7 @@ public class Board {
 		return result;
 	}
 
-	/**void setBN(int boardNum) {
+	void setBN(int boardNum) {
 		this.boardNum = boardNum;
 	}
 
@@ -63,9 +63,9 @@ public class Board {
 
 	void setBDT(String boardDt) {
 		this.boardDt = boardDt;
-	}*/
+	}
 
-	/**int getBN() {
+	int getBN() {
 		return boardNum;
 	}
 
@@ -83,6 +83,6 @@ public class Board {
 
 	String getBDT() {
 		return boardDt;
-	}*/
+	}
 
 }

@@ -3,8 +3,7 @@ package project;
 import lombok.Data;
 
 public class Lind {
-	
-	
+
 	private int won_no;
 	private String won_id;
 	private String won_pw;
@@ -20,8 +19,8 @@ public class Lind {
 
 	// 관리자 옵션 >사용자 조회 가능!
 	void showInfo() {
-		System.out.println(
-				"회원번호는"+won_no"이고 ID는" + won_id + "비밀번호는" + won_pw + "이름은" + won_name + "이고 사용자 권한은" + won_han + "전화번호는" + won_tel);
+		System.out.println("회원번호는" + won_no + "이고 ID는" + won_id + "비밀번호는" + won_pw + "이름은" + won_name + "이고 사용자 권한은"
+				+ won_han + "전화번호는" + won_tel);
 	}
 
 	// setter
@@ -48,7 +47,6 @@ public class Lind {
 	void setwon_tel(int won_tel) {
 		this.won_tel = won_tel;
 	}
-	//getter
-	
+	// getter
 
 }

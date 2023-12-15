@@ -20,7 +20,8 @@ public class BoardExe {
 	{
 		boards = new Board[100];
 	}
-	//초기값 생성.
+
+	// 초기값 생성.
 	public static void initData() {
 		boards[0] = new Board(1, "첫번째 글", "user01", "첫번째 글 입력중입니다.", "23-11-27");
 		boards[1] = new Board(2, "두번째 글", "user02", "두번째 글 입력중입니다.", "23-11-27");
@@ -33,6 +34,7 @@ public class BoardExe {
 		boards[7] = new Board(8, "여덟번째 글", "user08", "여덟번째 글 입력중입니다.", "23-11-27");
 
 	}
+
 //등록 글번호 제목 작성자 등등등
 	public static boolean addBoard(Board board) {
 		for (int i = 1; i < boards.length; i++) {
