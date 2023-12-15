@@ -10,7 +10,7 @@ public class BookApp {
 
 		Scanner scn = new Scanner(System.in);
 		BookExe exe = new BookExe();
-		BookDAO dao = new BookDAO();
+		BOOKDAO dao = new BOOKDAO();
 
 		while (run) {
 			System.out.println("1.등록 2.목록 3.단건조회 4.수정 5.삭제 6.종료");
@@ -40,7 +40,7 @@ public class BookApp {
 				break;
 
 			case 2: // 목록보기.
-				ArrayList<Book> stdAry = exe.getBookList();
+				ArrayList<Book> stdAry = dao.getBookList();
 				for (Book stdnt : stdAry) {
 					if (stdnt != null) {
 						stdnt.showInfo();
@@ -49,7 +49,7 @@ public class BookApp {
 				break;
 
 			case 3: // 단건조회.
-				System.out.println("조회할 학생번호 입력>>>>");
+				System.out.println("조회할 코드 입력>>>>");
 				break;
 
 			case 4: // 수정.
@@ -58,7 +58,7 @@ public class BookApp {
 				System.out.println("가격 입력>>>");
 				price = Integer.parseInt(scn.nextLine());
 
-				if (exe.modifyBook(bookCode, price)) {
+				if (dao.modifyBook(bookCode, price)) {
 					System.out.println("수정 완료.");
 				} else {
 					System.out.println("수정 실패.");

@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class BOOKDAO {
 	Connection conn;
@@ -25,7 +26,7 @@ public class BOOKDAO {
 	}
 
 	// 목록
-	Book[] getBookList() {
+	ArrayList<Book> getBookList() {
 		getConn();
 		Book[] books = new Book[10];
 		String sql = "select * from book oreder by 1";
@@ -75,25 +76,47 @@ public class BOOKDAO {
 		}
 		return false;
 	}
-	//조회
+
+	// 조회
 	Book getBook(String sno) {
 		getConn();
-		
+
 		String sql = "select * from book where book_code= ?";
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, sno);
 			rs = psmt.executeQuery();
-			if(rs.next()) {
+			if (rs.next()) {
 				Book book = new Book();
 				book.setBookCode(rs.getString("book_code"));
 				book.setBookTitle(rs.getString("book_tilte"));
 				book.setAuthor(rs.getString("book_press"));
 				book.setPress(rs.getString("book_press"));
 				book.setAuthor(rs.getString("book_press"));
-				
+				return book;
 			}
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
+		return null; // 조회 값이 없으면 null로 반환
 	}
-	
+
+	// 삭제
+	boolean modifyBook(String code, int price) {
+		getConn();
+		String sql = "UPDATE book" + "SET book_price" + "WHERE book_code=?";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, price);
+			psmt.setString(3, code);
+			int r = psmt.executeUpdate();
+			if (r > 0) {
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
 }

@@ -26,7 +26,7 @@ public class InOut {
 		}else {
 			sellBuy = "판매";
 		}
-		System.out.println("");
+		System.out.println("%5s %15s %s %8s\n", prodCode, transDate,);
 			
 		
 	}
