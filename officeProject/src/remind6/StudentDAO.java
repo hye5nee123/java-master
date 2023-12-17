@@ -57,7 +57,7 @@ public class StudentDAO {
 //추가.
 	boolean addStudent(Student std) {
 		getConn();
-		String sql = "insert into student calues(?,?,?,?) ";
+		String sql = "insert into student values(?,?,?,?) ";
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, std.getStudNo());

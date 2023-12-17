@@ -1,6 +1,6 @@
 package comyedam;
 
-public class Alind {
+public class Employee {
 
 	private int won_no;
 	private String won_id;
@@ -14,20 +14,39 @@ public class Alind {
 	private String geul_jak;
 	private String geul_ilja;
 
-	Alind() {
+	Employee() {
 
 	}
 
-	Alind(int won_no, String won_pw, int won_tel) {
+	// 생성자
+	Employee(int won_no, String won_pw, int won_tel) {
 		this.won_no = won_no;
 		this.won_pw = won_pw;
 		this.won_tel = won_tel;
 	}
 
+	// 게시글 더할 때 필요
+	Employee(int geul_num, String geul_jemok, String geul_nae, String geul_jak, String geul_ilja) {
+		this.geul_num = geul_num;
+		this.geul_jemok = geul_jemok;
+		this.geul_nae = geul_nae;
+		this.geul_jak = geul_jak;
+		this.geul_ilja = geul_ilja;
+	}
+
 	// 메소드 기능
 
 	// 관리자 옵션 >사용자 조회 가능!
-	void showInfo() {
+	void showInfo_ge() {
+		System.out.println("글 번호는 " //
+				+ geul_num + " 이고 제목은"//
+				+ geul_jemok + "글 내용은 " //
+				+ geul_nae + " 작성자는" //
+				+ geul_jak + " 이고 글 작성날짜는 " //
+				+ geul_ilja);
+	}
+
+	void ShowInfo() {
 		System.out.println("회원번호는" //
 				+ won_no + "이고 ID는"//
 				+ won_id + "비밀번호는" //
