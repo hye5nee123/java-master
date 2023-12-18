@@ -25,6 +25,15 @@ public class Employee {
 		this.won_tel = won_tel;
 	}
 
+	Employee(int won_no, String won_id, String won_pw, String won_name, String won_han, int won_tel) {
+		this.won_no = won_no;
+		this.won_id = won_id;
+		this.won_pw = won_pw;
+		this.won_name = won_name;
+		this.won_han = won_han;
+		this.won_tel = won_tel;
+	}
+
 	// 게시글 더할 때 필요
 	Employee(int geul_num, String geul_jemok, String geul_nae, String geul_jak, String geul_ilja) {
 		this.geul_num = geul_num;

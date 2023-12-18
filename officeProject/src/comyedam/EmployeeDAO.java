@@ -10,6 +10,7 @@ public class EmployeeDAO {
 	Connection conn;
 	PreparedStatement psmt;
 	ResultSet rs;
+	Employee[] employees;
 
 	// 연결하기
 	Connection getConn() {
@@ -20,26 +21,28 @@ public class EmployeeDAO {
 			System.out.println("연결 성공!");
 		} catch (Exception e) {
 			e.printStackTrace();
+
 		}
 		return conn;
+
 	}
 
 	// 글 단건 조회하기
-	Employee getGeul(String gli) {
+	Employee getGeul(int no) {
 		getConn();
 
-		String sql = "SELECT * FROM geul WHERE geul_num= ?";
+		String sql = "SELECT *  FROM geul  WHERE geul_num= ?";
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, gli);
+			psmt.setInt(1, no);
 			rs = psmt.executeQuery();
 			if (rs.next()) {
 				Employee geul = new Employee();
 				geul.setGeul_num(rs.getInt("geul_num"));
 				geul.setGeul_jemok(rs.getString("geul_jemok"));
-				geul.setGeul_nae(rs.getString(" geul_nae"));
+				geul.setGeul_nae(rs.getString("geul_nae"));
 				geul.setGeul_jak(rs.getString("geul_jak"));
-				geul.setGeul_ilja(rs.getString(" geul_ilja"));
+				geul.setGeul_ilja(rs.getString("geul_ilja"));
 				return geul;
 			}
 
@@ -93,9 +96,40 @@ public class EmployeeDAO {
 			psmt.setString(3, geul.getGeul_nae());
 			psmt.setString(4, geul.getGeul_jak());
 			psmt.setString(5, geul.getGeul_ilja());
-
 			int r = psmt.executeUpdate();
 			if (r == 1) {
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	// 페이징(뺄까 고민중 깃허브에 올린 사람 있으면 할거임...)
+	Employee[] pageList(Employee[] ary, int page) {
+		Employee[] resultAry = new Employee[5];
+
+		int start = (page - 1) * 5;
+		int end = page * 5;
+		int j = 0;
+		for (int i = 0; i < ary.length; i++) {
+			if (i >= start && i < end) {
+				resultAry[j++] = ary[i];
+			}
+		}
+		return resultAry;
+	}
+
+	// 글삭제
+	boolean removeEmployee(int num) {
+		getConn();
+		String sql = "DELETE FROM geul \r\n" + "WHERE geul_num=?";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, num);
+			int r = psmt.executeUpdate();
+			if (r > 0) {
 				return true;
 			}
 		} catch (SQLException e) {

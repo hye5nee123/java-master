@@ -12,8 +12,10 @@ public class EmployeeMemDAO {
 	ResultSet rs;
 
 	int no = 0;
-	String id;
-	String pw;
+
+	int wonNum = 0;
+
+	int tel = 0;
 
 	// 연결하기
 	Connection getConn() {
@@ -26,20 +28,22 @@ public class EmployeeMemDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
 		return conn;
 	}
 
 	// 정보 추가
-	boolean addEmployee(Employee ali) {
+	boolean addEmployee(Employee empA) {
 		getConn();
-		String sql = "insert into student values(?,?,?,?,?,?)";
+		String sql = "insert into won values(?,?,?,?,?,?)";
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, ali.getWon_id());
-			psmt.setString(2, ali.getWon_pw());
-			psmt.setString(3, ali.getWon_name());
-			psmt.setString(4, ali.getWon_han());
-
+			psmt.setInt(1, empA.getWon_no());
+			psmt.setString(2, empA.getWon_id());
+			psmt.setString(3, empA.getWon_pw());
+			psmt.setString(4, empA.getWon_name());
+			psmt.setString(5, empA.getWon_han());
+			psmt.setInt(6, empA.getWon_tel());
 			int r = psmt.executeUpdate();
 			if (r == 1) {
 				return true;
@@ -75,14 +79,16 @@ public class EmployeeMemDAO {
 	// **수정**
 
 	// 회원번호 주면 비밀번호 수정기능
-	boolean modifyAccount(int setwon_no, String won_pw) {
+	boolean modifyAccount(String id, String pw) {
+
+		// System.out.println(wonNum);
 		getConn();
-		String sql = "update won set won_pw = ? where setwon_no = ?";
+		String sql = "update won \r\n set won_pw = ? \r\n where won_id = ?";
+		// int code = 0;
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, pw);
-			psmt.setInt(2, no);
-
+			psmt.setString(2, id);
 			int r = psmt.executeUpdate();
 			if (r > 0) {
 				return true;
@@ -95,14 +101,14 @@ public class EmployeeMemDAO {
 	}// 비밀번호 수정
 
 	// 전화번호 수정
-	boolean modifyAlindT(int no, String tel) {
+	boolean modifyAccountT(String id, String tel) {
 		getConn();
-		String sql = "UPDATE won\r\n" + "SET wom_tel\r\n" + "WHERE won_no=?";
+		String sql = "UPDATE won \r\n  SET won_tel=?  \r\n WHERE won_id=?";
 
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, tel);
-			psmt.setInt(2, no);
+			psmt.setString(2, id);
 			int r = psmt.executeUpdate();
 			if (r > 0) {
 				return true;
@@ -112,5 +118,5 @@ public class EmployeeMemDAO {
 		}
 		return false;
 	}// 전화번호 수정 끝
-	
+
 }// end of class.
