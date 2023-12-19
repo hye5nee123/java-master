@@ -1,4 +1,4 @@
-package comyedam;
+package two;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -18,7 +18,7 @@ public class EmployeeDAO {
 		try {
 			Class.forName("oracle.jdbc.OracleDriver");
 			conn = DriverManager.getConnection(url, "dev", "dev");
-			System.out.println(" ");
+			System.out.println("연결 성공!");
 		} catch (Exception e) {
 			e.printStackTrace();
 

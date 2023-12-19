@@ -23,7 +23,7 @@ public class EmployeeMemDAO {
 		try {
 			Class.forName("oracle.jdbc.OracleDriver");
 			conn = DriverManager.getConnection(url, "dev", "dev");
-			System.out.println("로그인 성공");
+			System.out.println("");
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -38,12 +38,12 @@ public class EmployeeMemDAO {
 		String sql = "insert into won values(?,?,?,?,?,?)";
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setInt(1, empA.getWon_no());
-			psmt.setString(2, empA.getWon_id());
-			psmt.setString(3, empA.getWon_pw());
-			psmt.setString(4, empA.getWon_name());
-			psmt.setString(5, empA.getWon_han());
-			psmt.setInt(6, empA.getWon_tel());
+			psmt.setString(1, empA.getWon_id());
+			psmt.setString(2, empA.getWon_pw());
+			psmt.setString(3, empA.getWon_name());
+			psmt.setString(4, empA.getWon_han());
+			psmt.setInt(5, empA.getWon_tel());
+			psmt.setInt(6, empA.getWon_no());
 			int r = psmt.executeUpdate();
 			if (r == 1) {
 				return true;

@@ -1,4 +1,4 @@
-package comyedam;
+package two;
 
 public class Employee {
 

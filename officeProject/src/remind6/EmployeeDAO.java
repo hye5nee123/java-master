@@ -10,7 +10,7 @@ public class EmployeeDAO {
 	Connection conn;
 	PreparedStatement psmt;
 	ResultSet rs;
-	Employee[] employees;
+	static Employee[] employees;
 
 	// 연결하기
 	Connection getConn() {
@@ -18,7 +18,7 @@ public class EmployeeDAO {
 		try {
 			Class.forName("oracle.jdbc.OracleDriver");
 			conn = DriverManager.getConnection(url, "dev", "dev");
-			System.out.println("연결 성공!");
+			System.out.println(" ");
 		} catch (Exception e) {
 			e.printStackTrace();
 
@@ -88,14 +88,14 @@ public class EmployeeDAO {
 	// 글 추가
 	boolean addGeul(Employee geul) {
 		getConn();
-		String sql = "insert into geul values(?,?,?,?,?) ";
+		String sql = "insert into geul values(geul_seq.nextval,?,?,?,sysdate) ";
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setInt(1, geul.getGeul_num());
-			psmt.setString(2, geul.getGeul_jemok());
-			psmt.setString(3, geul.getGeul_nae());
-			psmt.setString(4, geul.getGeul_jak());
-			psmt.setString(5, geul.getGeul_ilja());
+			psmt.setString(1, geul.getGeul_jemok());
+
+			psmt.setString(2, geul.getGeul_nae());
+			psmt.setString(3, geul.getGeul_jak());
+
 			int r = psmt.executeUpdate();
 			if (r == 1) {
 				return true;
@@ -105,6 +105,22 @@ public class EmployeeDAO {
 		}
 		return false;
 	}
+
+	// 글 번호 자동 추가
+
+	/* orcle에서 연동완료 */
+
+	/**
+	 * seq 만드는 법 CREATE SEQUENCE geul_seq INCREMENT BY 1 START WITH 001 MINVALUE 1
+	 * MAXVALUE 9999 NOCYCLE NOCACHE NOORDER;
+	 */
+
+	// SELECT geul_seq.NEXTVAL FROM geul; 후에
+
+	// INSERT INTO geul(geul_num,geul_jemok) VALUES (geul_seq.NEXTVAL,'어린왕자');
+	// >넣어주기!
+
+	// https://docs.oracle.com/en/database/oracle/oracle-database/12.2/refrn/ALL_SEQUENCES.html#GUID-5867804F-1339-4CB6-9A56-6B6DCECB61BB
 
 	// 페이징(뺄까 고민중 깃허브에 올린 사람 있으면 할거임...)
 	Employee[] pageList(Employee[] ary, int page) {

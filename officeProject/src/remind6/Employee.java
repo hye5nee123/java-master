@@ -35,12 +35,12 @@ public class Employee {
 	}
 
 	// 게시글 더할 때 필요
-	Employee(int geul_num, String geul_jemok, String geul_nae, String geul_jak, String geul_ilja) {
-		this.geul_num = geul_num;
+	Employee(String geul_jemok, String geul_nae, String geul_jak) {
+
 		this.geul_jemok = geul_jemok;
 		this.geul_nae = geul_nae;
 		this.geul_jak = geul_jak;
-		this.geul_ilja = geul_ilja;
+
 	}
 
 	// 메소드 기능

@@ -1,4 +1,4 @@
-package remind6;
+package two;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -23,7 +23,7 @@ public class EmployeeMemDAO {
 		try {
 			Class.forName("oracle.jdbc.OracleDriver");
 			conn = DriverManager.getConnection(url, "dev", "dev");
-			System.out.println("");
+			System.out.println("로그인 성공");
 
 		} catch (Exception e) {
 			e.printStackTrace();
