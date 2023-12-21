@@ -7,7 +7,7 @@ public class EmployeeApp {
 		boolean run = true;
 		Employee[] employees = new Employee[10000];
 		/* 참조변수 */
-		//페이징.
+		// 페이징.
 		// employee class 기능을 쓰기 위해서 인스턴스 선언!
 		Employee empy = new Employee();
 		String id = null;
