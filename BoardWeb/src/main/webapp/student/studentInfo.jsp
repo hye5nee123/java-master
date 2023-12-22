@@ -1,6 +1,6 @@
 <%@page import="common.*"%>
 <!--  common 안에 있는 모든 것을 import 하겠습니다. -->
-<%@page import="common.StudentDAO"%>
+<%@page import="com.yedam.student.mapper.StudentDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!-- jsp 파일이구나! -->

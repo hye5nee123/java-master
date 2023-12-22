@@ -1,4 +1,4 @@
-package common;
+package com.yedam.student.vo;
 
 //외부에서 접근 가능한 퍼블릭 클래스 생성
 public class Student {
@@ -8,7 +8,7 @@ public class Student {
 	private int engScore;
 	private int matScore;
 
-	// 필드 초기화
+	// 생성자 정의
 	public Student() {
 
 	}

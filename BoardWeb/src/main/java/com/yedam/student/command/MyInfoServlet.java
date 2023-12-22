@@ -1,4 +1,4 @@
-package common;
+package com.yedam.student.command;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -8,6 +8,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.yedam.student.service.StudentService;
+import com.yedam.student.serviceImpl.StudentServiceMybatis;
+import com.yedam.student.vo.Student;
 
 @WebServlet("/MyInfoServlet")
 public class MyInfoServlet extends HttpServlet {
@@ -36,7 +40,9 @@ public class MyInfoServlet extends HttpServlet {
 
 		// db저장
 		Student std = new Student(sno, sname, Integer.parseInt(escore), Integer.parseInt(mscore));
-		StudentDAO dao = new StudentDAO();
+
+		// StudentDAO dao = new StudentDAO();
+		StudentService dao = new StudentServiceMybatis();
 		boolean done = dao.addStudent(std);
 
 		PrintWriter out = response.getWriter();
@@ -50,7 +56,7 @@ public class MyInfoServlet extends HttpServlet {
 		if (done) {
 			// 주소값은 list 값으로 넣어주기!
 			// error 404
-			out.println("<script>alert('ok'); location.href='student/studentList.jsp';</script>");
+			out.println("<script>alert('ok'); location.href='studentListServ.srv';</script>");
 		} else {
 			out.println("<script>alert('Fail');location.href='index.html'; </script>");
 		}
