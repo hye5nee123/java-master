@@ -21,7 +21,7 @@ public class FrontController extends HttpServlet {
 		System.out.println("생성자 호출");
 		map = new HashMap<String, Control>();
 	}
-.
+
 
 	@Override
 	public void init(ServletConfig config) throws ServletException {
