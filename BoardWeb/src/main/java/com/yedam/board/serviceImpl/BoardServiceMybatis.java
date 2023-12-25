@@ -24,7 +24,7 @@ public class BoardServiceMybatis implements BoardService {
 	@Override
 	public BoardVO getBoard(int bno) {
 		mapper.updateCnt(bno);
-		//애매 
+		// 애매
 		return mapper.selectOne(bno);
 	}
 

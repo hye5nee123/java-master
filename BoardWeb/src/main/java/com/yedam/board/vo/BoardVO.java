@@ -7,6 +7,7 @@ import lombok.Data;
 @Data
 //get,set 만들어줌!
 
+//여기가 찐 실행 하는 곳!
 //value를 담아놓기 위한 object
 public class BoardVO {
 	private int boardNo;
@@ -17,4 +18,8 @@ public class BoardVO {
 	private Date writeDate;
 	private int clickCnt;
 	private String image;
+
+	public String toString() {
+		return title + " " + content;
+	}
 }
