@@ -19,6 +19,9 @@ public class AddBoardControl implements Control {
 		String writer = req.getParameter("writer");
 		String content = req.getParameter("content");
 		BoardVO vo = new BoardVO();
+
+		// 왜 빨간줄 뜨는지 복습 하면서 이해 불가 > 물어볼것. 집에 lombok 없어서 오류나는 거였음.;
+
 		vo.setTitle(title);
 		vo.setWriter(writer);
 		vo.setContent(content);
@@ -37,7 +40,7 @@ public class AddBoardControl implements Control {
 			try {
 				resp.sendRedirect("boardForm.do");
 			} catch (IOException e) {
-				
+
 				e.printStackTrace();
 			}
 		}
