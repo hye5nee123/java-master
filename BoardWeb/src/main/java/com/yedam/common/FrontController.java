@@ -11,6 +11,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.yedam.board.command.AddBoardControl;
+import com.yedam.board.command.BoardFormControl;
+import com.yedam.board.command.BoardListControl;
+import com.yedam.board.command.GetBoatdControl;
+import com.yedam.board.command.ModifyBoardControl;
+import com.yedam.board.command.ModifyFormControl;
+import com.yedam.board.command.RemoveFormControl;
+
 //@WebServlet("*.do")
 public class FrontController extends HttpServlet {
 	// 생명주기 : 생성자 -> init() -> service() -> destroy()
@@ -20,18 +28,32 @@ public class FrontController extends HttpServlet {
 	public FrontController() {
 		System.out.println("생성자 호출");
 		map = new HashMap<String, Control>();
+		// 키 값
 	}
-
 
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		System.out.println("init() 호출");
-		map.put("/main.do", new MainControl());
-		map.put("/sub.do", new SubControl());
+		/**
+		 * map.put("/main.do", new MainControl()); map.put("/sub.do", new SubControl());
+		 */
+		// 게시판 관련. 데이터 조회 후 jsp에 보여주어야 함
+		// control을 구현
+		map.put("/boardList.do", new BoardListControl());
+		map.put("/boardForm.do", new BoardFormControl());
+		map.put("/addBoard.do", new AddBoardControl());
+		map.put("/getBoard.do", new GetBoatdControl());
+		map.put("/modifyForm.do", new ModifyFormControl());
+		map.put("/modifyBoard.do", new ModifyBoardControl());
+		map.put("/removeForm.do", new RemoveFormControl());
+		map.put("/removeBoard.do", new RemoveBoardControl());
+
 	}
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("utf-8");
+
 		System.out.println("service() 호출");
 		String url = req.getRequestURI(); // /BoardWeb/main.do > url 치면 읽어오는 것을 요청
 		String context = req.getContextPath(); // /Boardweb을 읽어옴(프로젝트 상위 것을 읽어오겠다!)
