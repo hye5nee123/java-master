@@ -21,6 +21,8 @@ public class BoardFormControl implements Control {
 		} catch (ServletException | IOException e) {
 			e.printStackTrace();
 		}
+		
+		
 	}
 
 }
