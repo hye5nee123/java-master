@@ -1,15 +1,13 @@
-<%@page import="com.yedam.board.vo.BoardVO"%>
-<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
-<%@ include file="../layout/menu.jsp"%>
-<%@ include file="../layout/nav.jsp"%>
-<%
-List<BoardVO> list = (List<BoardVO>) request.getAttribute("boardList");
-%>
+
+
 
 <h3>게시판</h3>
+${boardList }
 <table class="table">
 	<thead>
 		<tr>
@@ -21,22 +19,18 @@ List<BoardVO> list = (List<BoardVO>) request.getAttribute("boardList");
 		</tr>
 	</thead>
 	<tbody>
+		<c:forEach var="vo" items="${boardList }">
+			<tr>
+				<td>${vo.boardNo}</td>
+				<td><a href="getBoard.do?bno=${vo.boardNo}">${vo.title}</a></td>
+				<td>${vo.writer}</td>
+				<td><fmt:formatDate value="${vo.writeDate}"
+						pattern="yyyy-MM-dd" /></td>
+				<td>${vo.clickCnt}</td>
+			</tr>
 
-
-		<%
-		for (BoardVO vo : list) {
-		%>
-		<tr>
-			<td><%=vo.getBoardNo()%></td>
-			<td><a href="getBoard.do?bno=<%=vo.getBoardNo()%>"><%=vo.getTitle()%></td>
-			<td><%=vo.getWriter()%></td>
-			<td><%=vo.getWriteDate()%></td>
-			<td><%=vo.getClickCnt()%></td>
-		</tr>
-		<%
-		}
-		%>
+		</c:forEach>
 	</tbody>
 </table>
-<%@ include file="../layout/foot.jsp"%>
+
 

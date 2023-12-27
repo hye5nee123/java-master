@@ -3,7 +3,7 @@ package com.yedam.board.mapper;
 import java.util.List;
 
 import com.yedam.board.vo.BoardVO;
-
+		//intetface는 정의부분.
 public interface BoardMapper {
 	// 목록,단건조회,추가,수정,삭제,조회수증가.
 	List<BoardVO> selectList();

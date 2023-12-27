@@ -12,7 +12,7 @@ import com.yedam.board.serviceImpl.BoardServiceMybatis;
 import com.yedam.board.vo.BoardVO;
 import com.yedam.common.Control;
 
-public class GetBoatdControl implements Control {
+public class GetBoardControl implements Control {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {

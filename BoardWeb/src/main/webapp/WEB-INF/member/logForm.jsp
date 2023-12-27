@@ -5,16 +5,16 @@
 <%
 String msg = (String) request.getAttribute("message");
 %>
+
 <%
 if (msg != null) {
 %>
-<p>
-	<%=msg%>
-</p>
+<p><%=msg%></p>
 <%
 }
 %>
-<form action="login.do">
+
+<form action="login.do" method="post">
 	<table class="table">
 		<tbody>
 			<tr>
@@ -30,7 +30,7 @@ if (msg != null) {
 			</tr>
 			<tr>
 				<td colspan="2" align="center"><input type="submit" value="로그인"
-					class="btn btn=primary"> <input type="reset" value="초기화"
+					class="btn btn-primary"> <input type="reset" value="초기화"
 					class="btn btn-warning"></td>
 			</tr>
 		</tbody>

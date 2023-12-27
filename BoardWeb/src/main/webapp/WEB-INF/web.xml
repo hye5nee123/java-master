@@ -6,6 +6,17 @@
 	<display-name>BoardWeb</display-name>
 
 	<!-- 주석... frontcontroller의 url 등록. -->
+	<listener>
+		<listener-class>org.apache.tiles.extras.complete.CompleteAutoloadTilesListener</listener-class>
+	</listener>
+	<servlet>
+		<servlet-name>Tiles Dispatch Servlet</servlet-name>
+		<servlet-class>org.apache.tiles.web.util.TilesDispatchServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Tiles Dispatch Servlet</servlet-name>
+		<url-pattern>*.tiles</url-pattern>
+	</servlet-mapping>
 	<servlet>
 		<servlet-name>front</servlet-name>
 		<servlet-class>com.yedam.common.FrontController</servlet-class>
@@ -21,7 +32,7 @@
 
 
 	<welcome-file-list>
-		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
 
 </web-app>

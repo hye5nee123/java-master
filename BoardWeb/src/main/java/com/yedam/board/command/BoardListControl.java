@@ -22,11 +22,12 @@ public class BoardListControl implements Control {
 		// interface Mybatis> interface 구현.
 		List<BoardVO> list = svc.boardList();
 
-		// 참조변수 list를 boardlist라는 attri에 담아서 가져옴
+		// 참조변수 list를 boardlist라는 attribute에 담아서 가져옴
 		req.setAttribute("boardList", list);
 
 		// 페이지 이동(forward)
-		RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/board/boardList.jsp");
+		RequestDispatcher rd //
+				= req.getRequestDispatcher("board/boardList.tiles");
 		try {
 			rd.forward(req, resp);
 		} catch (ServletException | IOException e) {

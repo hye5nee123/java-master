@@ -40,7 +40,7 @@ public class StudentDAO {
 			rs = psmt.executeQuery();
 			while (rs.next()) {
 				Student student = new Student();
-				student.setStudNo(rs.getString("student_number"));
+				student.setStudNo(rs.getString("student_no"));
 				student.setStudName(rs.getString("student_name"));
 				student.setEngScore(rs.getInt("eng_score"));
 				student.setMatScore(rs.getInt("mat_score"));
@@ -79,18 +79,19 @@ public class StudentDAO {
 		}
 		return false;
 	}
-	//단건조회.
+
+	// 단건조회.
 	public Student getStudnet(String sno) {
 		getConn();
 
-		String sql = "select * from student where student_number= ?";
+		String sql = "select * from student where student_no= ?";
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, sno);
 			rs = psmt.executeQuery();
 			if (rs.next()) {
 				Student student = new Student();
-				student.setStudNo(rs.getString("student_number"));
+				student.setStudNo(rs.getString("student_no"));
 				student.setStudName(rs.getString("student_name"));
 				student.setEngScore(rs.getInt("eng_score"));
 				student.setMatScore(rs.getInt("mat_score"));
@@ -109,7 +110,7 @@ public class StudentDAO {
 		String sql = "UPDATE student\r\n" //
 				+ "SET    eng_score = ?,\r\n" //
 				+ "       mat_score = ?\r\n"//
-				+ "WHERE  student_number=?";
+				+ "WHERE  student_no=?";
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, eng);
