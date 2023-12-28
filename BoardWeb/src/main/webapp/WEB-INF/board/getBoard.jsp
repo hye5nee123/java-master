@@ -3,14 +3,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
-<jsp:include page="../layout/menu.jsp"></jsp:include>
-<jsp:include page="../layout/nav.jsp"></jsp:include>
+
 
 <h3>상세화면</h3>
 
 <form name="myForm" action="modifyForm.do">
 	<input type="hidden" name="bno" value="${vo.boardNo }">
-	<table class="table">
+	<table border="1" class="table">
 		<tbody>
 			<tr>
 				<td>글번호</td>
@@ -65,4 +64,3 @@
 		document.forms.myForm.submit();
 	}
 </script>
-<jsp:include page="../layout/foot.jsp"></jsp:include>
