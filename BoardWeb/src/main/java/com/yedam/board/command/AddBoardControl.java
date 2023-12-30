@@ -16,6 +16,7 @@ public class AddBoardControl implements Control {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
+		// test용
 		// param(3개), db insert, 목록페이지.
 		// get요청일때/ post요청일때...
 
