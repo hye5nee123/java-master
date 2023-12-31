@@ -6,7 +6,7 @@
         const friends = [obj1, obj2, obj3];
 
         for (let friend of friends) {
-            for (let prop in friend) {
-                console.log(prop.toUpperCase(), ' - ', friend[prop]); // obj1['id']
+            for (let key in friend) {
+                console.log(key.toUpperCase(), ' - ', friend[key]); // obj1['id']
             }
         }
