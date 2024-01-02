@@ -1,52 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>todo/20231229.html</title>
     <style>
-        #show{
-            width:  360px;
-            height: 250px;
-            background-color: lavenderblush;
-            color:tomato;
+        #show {
+            width: 290px;
+            height: 350px;
+            background-color: aqua;
         }
 
-        span{
-            display: inline=block;
-            width:80px;
+        span {
+            display: inline-block;
+            width: 90px;
             height: 30px;
-            background-color: lightpink;
+            background-color: yellow;
+            margin: 2px;
         }
     </style>
 </head>
+
 <body>
 
+    <input type="text" name="userValue">
+    <button id="delBtn">삭제</button>
     <div id="show">
-        <span>Lorem</span>
-        <br>
-        <span>ipsum</span>
-        <br>
-        <span>송강</span>
-        <br>
-        <span>차은우</span>
-        <br>
-        <span>서강준</span>
-        
     </div>
+
     <script>
-       
-       const words = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus vel sunt cupiditate incidunt recusandae. Quaerat blanditiis sit unde, quisquam cum dignissimos,porro nobis provident tempora repellat rerum sunt, fugiat quos!';
+        const words =
+            'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique, rem? Numquam voluptatem hic qui quidem est. Sit ipsa, ab ea adipisci corrupti et iusto, libero obcaecati quod rerum nemo unde!';
+        const wordAry = words.split(' ');
+        // 화면상에 span 생성.
+        let show = document.querySelector('#show');
+        // for반복문.
+        wordAry.forEach(function (word) {
+            let span = document.createElement('span');
+            span.innerText = word;
+            show.appendChild(span);
+        })
 
-        const wordAry = words.split(",");
-        //document.write (words);
-        document.writeln(wordAry);
-        document.writeln(arr[0]); // apple
-        document.writeln(arr[1]); // banana
-        document.writeln(arr[2]); // orange
-
-
-
+        // id=delBtn 에 클릭.
+        document.getElementById('delBtn').addEventListener('click', function () {
+            // 사용자의 입력값(userInput) == 
+            // 화면상에 span요소를 가져와서 spanAll:  span.remove();
+            // 사용자 입력화면 초기화.
+            let userInput = document.querySelector('input[name=userValue]').value;
+            let spanAll = document.querySelectorAll('span');
+            for (let item of spanAll) {
+                if (userInput == item.innerText) {
+                    item.remove();
+                }
+            }
+            // 초기화.
+            document.querySelector('input[name=userValue]').value = '';
+        })
     </script>
 </body>
+
 </html>
