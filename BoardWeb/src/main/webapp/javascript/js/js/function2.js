@@ -41,7 +41,7 @@ function makebody(data = [], pos = {}) {
     //
    
     data.forEach(function(item){
-    let tr = document.createElement('tr');
+        let tr = document.createElement('tr');
     //tr에 속성지정.
     if(item.gender == 'Male'){
         tr.setAttribute('style','background-color:aqua');
