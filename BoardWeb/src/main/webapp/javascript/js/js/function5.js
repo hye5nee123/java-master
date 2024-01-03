@@ -15,6 +15,7 @@ ary.forEach((elem, idx) => {
 })
 
 
+//prototype은 따로 메모리 차지는 x 그저 참조할 뿐
 Array.prototype.sum = function () {
     console.log(this);
     let result = 0;
