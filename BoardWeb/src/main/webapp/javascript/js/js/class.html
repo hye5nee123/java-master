@@ -14,7 +14,47 @@
         <thead id="theader"></thead>
         <tbody id="tbody"></tbody>
     </table>
-    <script src="js/class5.js"></script>
+   <!--src 경로 지정할 때 js 앞에 꼭 붙이기 -->
+    <script type="module" src="js/class7.js"></script>
+
+    <script>
+        // \n
+        document.write('a\nb');
+        document.write('\n');
+        document.write('\\n');
+        //Document.write('she said\n\raa'+'\xab');
+        let a =0;
+        let b = 20;
+        let ary = [1,2,3];
+        document.write( `a의 값은 ${a<b ? true:false}`);
+        document.write(`ary의 합계는 ${ary.reduce((acc,item) => item+acc)}`);
+        document.write(`hello
+        good
+        nice`);
+
+        //오늘 날짜 기준으로 만들어줌.
+        // new Date();
+        //새로운 날짜 정의
+        let day = new Date(2020,9,5,10,10,10);
+        /**console.log(day.toDateString());
+        console.log(day.toString());
+        console.log(day.toISOString());*/
+
+        Date.prototype.dateFormat = function(){
+
+            console.log(this);  // yy-MM-dd HH:mm:ss
+            let yyyy = this.getFullYear();
+            let MM = ('0'+(this.getMonth()+1)).slice(-2);
+            let dd = ('0'+this.getDate()).slice(-2);
+            let HH = ('0' + this.getHours()).slice(-2);
+            let mm = ('0' + this.getMinutes()).slice(-2);
+            let ss =('0' + this.getSeconds()).slice(-2);
+            return yyyy + ':' + MM +':' + dd+':'+ HH+':'+mm+':'+ss;
+        }
+
+        console.log(day.dateFormat());
+
+    </script>
 </body>
 
 </html>

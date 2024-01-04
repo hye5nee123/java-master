@@ -123,6 +123,12 @@ console.log(`합계점수: ${sum}` )
 
 
 
+const str = "안뇽안뇽안뇽";
+
+document.writeln(str.indexOf('안뇽')); // 0
+
+
+
 
 
 
