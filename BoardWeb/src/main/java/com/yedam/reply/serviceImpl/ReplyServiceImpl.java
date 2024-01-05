@@ -24,4 +24,16 @@ public class ReplyServiceImpl implements ReplyService {
 		return mapper.deleteReply(replyNo) == 1;
 	}
 
+	@Override
+	public boolean addReply(ReplyVO vo) {
+		return mapper.insertReply(vo) == 1;
+	}
+
+	@Override
+	public ReplyVO getReply(int replyNo) {
+		
+		return mapper.selectReply(replyNo);
+	}
+	
+
 }
