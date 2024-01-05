@@ -17,12 +17,10 @@ public class BoardListControl implements Control {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
-		// 게시글 목록 -> boardList.jsp로 전달.
+		// 게시글 목록 -> boardList.jsp 로 전달.
 		BoardService svc = new BoardServiceMybatis();
-		// interface Mybatis> interface 구현.
 		List<BoardVO> list = svc.boardList();
 
-		// 참조변수 list를 boardlist라는 attribute에 담아서 가져옴
 		req.setAttribute("boardList", list);
 
 		// 페이지 이동(forward)
@@ -33,7 +31,6 @@ public class BoardListControl implements Control {
 		} catch (ServletException | IOException e) {
 			e.printStackTrace();
 		}
-
 	}
 
 }

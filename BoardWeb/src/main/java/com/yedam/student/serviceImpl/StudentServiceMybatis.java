@@ -11,40 +11,34 @@ import com.yedam.student.service.StudentService;
 import com.yedam.student.vo.Student;
 
 public class StudentServiceMybatis implements StudentService {
-
+	// jdbc vs. mybatis.
 	SqlSessionFactory factory = DataSource.getInstance();
-	// jdbc vs. mybatis. //이게 공장
 	SqlSession session = factory.openSession(true);
 
 	StudentMapper mapper = session.getMapper(StudentMapper.class);
 
 	@Override
 	public List<Student> studentList() {
-
 		return mapper.studentList();
 	}
 
 	@Override
 	public boolean addStudent(Student std) {
-
 		return mapper.addStudent(std) == 1;
 	}
 
 	@Override
 	public boolean modStudent(String sno, int escore, int mscore) {
-
 		return false;
 	}
 
 	@Override
 	public boolean remStudent(String sno) {
-
 		return mapper.remStudent(sno) == 1;
 	}
 
 	@Override
-	public Student getStudnet(String sno) {
-
+	public Student getStudent(String sno) {
 		return null;
 	}
 

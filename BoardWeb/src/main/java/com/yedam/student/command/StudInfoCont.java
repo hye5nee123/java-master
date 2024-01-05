@@ -12,6 +12,7 @@ public class StudInfoCont implements Control {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
+		// TODO Auto-generated method stub
 		try {
 			req.getRequestDispatcher("student/studentInfo.tiles").forward(req, resp);
 		} catch (ServletException | IOException e) {

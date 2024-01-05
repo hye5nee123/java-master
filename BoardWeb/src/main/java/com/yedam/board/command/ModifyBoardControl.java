@@ -14,34 +14,23 @@ public class ModifyBoardControl implements Control {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
-		
+		// TODO Auto-generated method stub
 		String bno = req.getParameter("bno");
-		
 		String content = req.getParameter("content");
-
 		BoardVO vo = new BoardVO();
-		
 		vo.setBoardNo(Integer.parseInt(bno));
 		vo.setContent(content);
 
 		BoardService svc = new BoardServiceMybatis();
-
-		if (svc.modBoard(vo)) {
-			try {
-				resp.sendRedirect("boardlist.do");
-			} catch (IOException e) {
-
-				e.printStackTrace();
+		try {
+			if (svc.modBoard(vo)) {
+				resp.sendRedirect("boardList.do");
+			} else {
+				resp.sendRedirect("boardForm.do");
 			}
-		} else {
-			try {
-				resp.sendRedirect("modifyForm.do");
-			} catch (IOException e) {
-
-				e.printStackTrace();
-			}
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
-
 	}
 
 }

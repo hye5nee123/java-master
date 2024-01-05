@@ -23,16 +23,15 @@ public class ModifyFormControl implements Control {
 		BoardVO vo = svc.getBoard(Integer.parseInt(bno));
 
 		req.setAttribute("vo", vo);
-		// 페이지 이동(forward)
-		RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/board/modBoardForm.jsp");
 
+		// 페이지 이동(forward)
+		RequestDispatcher rd = //
+				req.getRequestDispatcher("WEB-INF/board/modBoardForm.jsp");
 		try {
 			rd.forward(req, resp);
 		} catch (ServletException | IOException e) {
 			e.printStackTrace();
 		}
-		
-		
 
 	}
 

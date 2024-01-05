@@ -12,14 +12,12 @@ import com.yedam.student.service.StudentService;
 import com.yedam.student.serviceImpl.StudentServiceImpl;
 import com.yedam.student.vo.Student;
 
-//url 그자체
 @WebServlet("/modifyStudent")
 public class ModifyStudent extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	public ModifyStudent() {
 		super();
-
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -27,24 +25,24 @@ public class ModifyStudent extends HttpServlet {
 
 		response.setContentType("text/html;charset=utf-8");
 
-		// 파라미터 활용해서 조회
+		// 파라미터 활용해서 조회.
 		String sno = request.getParameter("sno");
 
-		// StudentDAO dao = new StudentDAO();
 		StudentService dao = new StudentServiceImpl();
-		Student std = dao.getStudnet(sno);
+		Student std = dao.getStudent(sno);
 
-		String str = "<form action = 'updateStudent'>";
-		str += "<table border= '1'><caption>학생정보</caption>";//
-		str += "<tr><th>학번</th><td><input type = 'text'"//
-				+ "readonly name='sno' value='" //
-				+ std.getStudNo() + "'></td></tr>";//
-		str += "<tr><th>이름</th><td>" + std.getStudName() + "</td></tr>";//
-		str += "<tr><th>영어</th><td><input type = 'number' name = 'escore'value='" //
-				+ std.getEngScore() + "'></td></tr>";
-		str += "<tr><th>수학</th><td><input type = 'number' name = 'mscore'value='" //
-				+ std.getMatScore() + "'></td></tr>";//
-		str += "<tr><td><input type = 'submit' value = '수정'></td></tr></table>";
+		String str = "<form action='updateStudent'>";
+		str += "<table border='1'><caption>학생정보</caption>";
+		str += "<tr><th>학번</th><td><input type='text'"//
+				+ " readonly name='sno' value='" //
+				+ std.getStudentNumber() + "'></td></tr>";
+		str += "<tr><th>이름</th><td>" + std.getStudentName() //
+				+ "</td></tr>";
+		str += "<tr><th>영어</th><td><input type='number' name='escore' value='" //
+				+ std.getEnglishScore() + "'></td></tr>";
+		str += "<tr><th>수학</th><td><input type='number' name='mscore' value='" //
+				+ std.getMathmaticScore() + "'></td></tr>";
+		str += "<tr><td><input type='submit' value='수정'></td></tr></table>";
 
 		str += "</form>";
 
@@ -54,7 +52,6 @@ public class ModifyStudent extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 		doGet(request, response);
 	}
 

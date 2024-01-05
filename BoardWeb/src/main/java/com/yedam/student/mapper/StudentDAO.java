@@ -1,5 +1,4 @@
 package com.yedam.student.mapper;
-//저장공간: Oracle DB.
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,7 +10,9 @@ import java.util.List;
 
 import com.yedam.student.vo.Student;
 
-//추가/수성/삭제/목록/단건조회
+//저장공간: Oracle DB.
+
+//추가/수정/삭제/목록/단건조회.
 public class StudentDAO {
 	Connection conn;
 	PreparedStatement psmt;
@@ -22,11 +23,25 @@ public class StudentDAO {
 		try {
 			Class.forName("oracle.jdbc.OracleDriver");
 			conn = DriverManager.getConnection(url, "dev", "dev");
-			System.out.println("연결 성공!!");
+			System.out.println("연결성공!!");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return conn;
+	}
+
+	// 연결접속 해제.
+	void disconn() {
+		try {
+			if (conn != null)
+				conn.close();
+			if (rs != null)
+				rs.close();
+			if (psmt != null)
+				psmt.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	// 목록.
@@ -34,83 +49,84 @@ public class StudentDAO {
 		getConn();
 		List<Student> students = new ArrayList<>();
 		String sql = "select * from student order by 1";
-
 		try {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
 			while (rs.next()) {
 				Student student = new Student();
-				student.setStudNo(rs.getString("student_no"));
-				student.setStudName(rs.getString("student_name"));
-				student.setEngScore(rs.getInt("eng_score"));
-				student.setMatScore(rs.getInt("mat_score"));
+				student.setStudentNumber(rs.getString("student_number"));
+				student.setStudentName(rs.getString("student_name"));
+				student.setEnglishScore(rs.getInt("english_score"));
+				student.setMathmaticScore(rs.getInt("mathmatic_score"));
 
-				students.add(student); // 추가함
-
-				// 배열의 빈곳에 한건 저장.
-				/**
-				 * for (int i = 0; i < students.length; i++) { if (students[i] == null) {
-				 * students[i] = student; break; // for 반복문 종료. } }
-				 */
+				students.add(student);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			disconn();
 		}
 		return students;
 	} // end of getStudentList().
 
-//추가.
+// 추가.
 	public boolean addStudent(Student std) {
 		getConn();
 		String sql = "insert into student values(?,?,?,?) ";
 		try {
+			conn.setAutoCommit(false); // 자동커밋 실행 여부.
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, std.getStudNo());
-			psmt.setString(2, std.getStudName());
-			psmt.setInt(3, std.getEngScore());
-			psmt.setInt(4, std.getMatScore());
 
-			int r = psmt.executeUpdate();
+			psmt.setString(1, std.getStudentNumber());
+			psmt.setString(2, std.getStudentName());
+			psmt.setInt(3, std.getEnglishScore());
+			psmt.setInt(4, std.getMathmaticScore());
+
+			int r = psmt.executeUpdate();// 처리된 건수 반환.
+
 			if (r == 1) {
+				conn.commit();
 				return true;
 			}
+
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			disconn();
 		}
 		return false;
-	}
+	} // end of addStudent()
 
 	// 단건조회.
-	public Student getStudnet(String sno) {
+	public Student getStudent(String sno) {
 		getConn();
-
-		String sql = "select * from student where student_no= ?";
+		String sql = "select * from student where student_number=?";
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, sno);
 			rs = psmt.executeQuery();
 			if (rs.next()) {
 				Student student = new Student();
-				student.setStudNo(rs.getString("student_no"));
-				student.setStudName(rs.getString("student_name"));
-				student.setEngScore(rs.getInt("eng_score"));
-				student.setMatScore(rs.getInt("mat_score"));
+				student.setStudentNumber(rs.getString("student_number"));
+				student.setStudentName(rs.getString("student_name"));
+				student.setEnglishScore(rs.getInt("english_score"));
+				student.setMathmaticScore(rs.getInt("mathmatic_score"));
 				return student;
-
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			disconn();
 		}
-		return null; // 조회된 값이 없으면 null 반환
-	}
+		return null; // 조회된 값이 없으면 null 값 반환.
+	} // end of getStudent
 
-	// 수정
 	public boolean modifyStudent(String no, int eng, int mat) {
 		getConn();
-		String sql = "UPDATE student\r\n" //
-				+ "SET    eng_score = ?,\r\n" //
-				+ "       mat_score = ?\r\n"//
-				+ "WHERE  student_no=?";
+		String sql = "update student "//
+				+ "   set english_score=? "//
+				+ "      ,mathmatic_score=? "//
+				+ "   where student_number=?";
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, eng);
@@ -123,14 +139,15 @@ public class StudentDAO {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			disconn();
 		}
 		return false;
-
-	}
+	} //
 
 	public boolean removeStudent(String name) {
 		getConn();
-		String sql = "DELETE FROM student \r\n" + "WHERE student_name=?";
+		String sql = "delete from student where student_name=?";
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, name);
@@ -138,11 +155,11 @@ public class StudentDAO {
 			if (r > 0) {
 				return true;
 			}
-
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			disconn();
 		}
 		return false;
 	}
-
 }

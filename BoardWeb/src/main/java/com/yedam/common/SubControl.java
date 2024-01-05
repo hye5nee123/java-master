@@ -16,7 +16,6 @@ public class SubControl implements Control {
 		BoardService svc = new BoardServiceMybatis();
 		BoardVO vo = svc.getBoard(Integer.parseInt(bno));
 		System.out.println(vo.toString());
-
 	}
 
 }

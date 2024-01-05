@@ -18,7 +18,6 @@ public class MainControl implements Control {
 		for (BoardVO vo : list) {
 			System.out.println(vo.toString());
 		}
-
 	}
 
 }

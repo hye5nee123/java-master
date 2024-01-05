@@ -12,6 +12,8 @@ public class StudentListCont implements Control {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
+		// TODO Auto-generated method stub
+
 		try {
 			// tiles.xml -> WILDCARD:student/* -> student/{1}.jsp
 			req.getRequestDispatcher("student/studentList.tiles").forward(req, resp);

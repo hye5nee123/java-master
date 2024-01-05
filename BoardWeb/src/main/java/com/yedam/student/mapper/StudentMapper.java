@@ -6,13 +6,7 @@ import com.yedam.student.vo.Student;
 
 public interface StudentMapper {
 	// CRUD
-
-	// 목록 가져오기
 	List<Student> studentList();
-
-	// 한건 등록
-	int addStudent(Student std); // #{studentNo}
-
-	// 삭제
+	int addStudent(Student std); // #{studentNumber}
 	int remStudent(String sno); // #{sno}
 }

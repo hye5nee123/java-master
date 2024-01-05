@@ -14,15 +14,15 @@ public class BoardFormControl implements Control {
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
 		// 등록화면 open.
+
 		// 페이지 이동(forward)
-		RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/board/addBoardForm.jsp");
+		RequestDispatcher rd = //
+				req.getRequestDispatcher("board/addBoardForm.tiles");
 		try {
 			rd.forward(req, resp);
 		} catch (ServletException | IOException e) {
 			e.printStackTrace();
 		}
-		
-		
 	}
 
 }

@@ -1,62 +1,60 @@
 package com.yedam.student.vo;
 
-//외부에서 접근 가능한 퍼블릭 클래스 생성
 public class Student {
-//필드에 학생들 속성 정의
-	private String studNo;
-	private String studName;
-	private int engScore;
-	private int matScore;
+	// 필드정의.
+	private String studentNumber; // student_number
+	private String studentName;
+	private int englishScore;
+	private int mathmaticScore;
 
-	// 생성자 정의
+	// 생성자정의.
 	public Student() {
-
 	}
 
-	public Student(String studNo, String studName, int engScore, int matScore) {
-		this.studNo = studNo; // student_number
-		this.studName = studName;
-
-		this.engScore = engScore;
-		this.matScore = matScore;
+	public Student(String studentNumber, String studentName, int englishScore, int mathmaticScore) {
+		this.studentNumber = studentNumber;
+		this.studentName = studentName;
+		this.englishScore = englishScore;
+		this.mathmaticScore = mathmaticScore;
 	}
 
-	// 메소드 기능
+	// 메소드 정의.
 	public void showInfo() {
-		System.out.println("학생번호는" + studNo + "이고 이름은" + studName + "이고 영어 점수는" + engScore + "수학점수는" + matScore);
+		System.out.println("이름은 " + studentName + ", 영어점수는 " + englishScore + ", 수학점수는 " + mathmaticScore + "입니다.");
 	}
 
-	// setter
-	public void setStudNo(String studNo) {
-		this.studNo = studNo;
+	// getter.
+	public String getStudentNumber() {
+		return studentNumber;
 	}
 
-	public void setStudName(String studName) {
-		this.studName = studName;
+	public String getStudentName() {
+		return studentName;
 	}
 
-	public void setEngScore(int engScore) {
-		this.engScore = engScore;
+	public int getEnglishScore() {
+		return englishScore;
 	}
 
-	public void setMatScore(int matScore) {
-		this.matScore = matScore;
+	public int getMathmaticScore() {
+		return mathmaticScore;
 	}
 
-	// getter
-	public String getStudNo() {
-		return studNo;
+	// setter.
+	public void setStudentNumber(String studentNumber) {
+		this.studentNumber = studentNumber;
 	}
 
-	public String getStudName() {
-		return studName;
+	public void setStudentName(String studentName) {
+		this.studentName = studentName;
 	}
 
-	public int getEngScore() {
-		return engScore;
+	public void setEnglishScore(int englishScore) {
+		this.englishScore = englishScore;
 	}
 
-	public int getMatScore() {
-		return matScore;
+	public void setMathmaticScore(int mathmaticScore) {
+		this.mathmaticScore = mathmaticScore;
 	}
+
 }
