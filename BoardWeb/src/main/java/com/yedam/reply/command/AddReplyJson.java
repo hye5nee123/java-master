@@ -2,7 +2,6 @@ package com.yedam.reply.command;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,38 +20,37 @@ public class AddReplyJson implements Control {
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
 		// TODO Auto-generated method stub
 		// insert....
+		resp.setContentType("text/json;charset=utf-8");
+
 		String bno = req.getParameter("bno");
 		String reply = req.getParameter("reply");
 		String replyer = req.getParameter("replyer");
-		
-		
+
 		ReplyVO vo = new ReplyVO();
 		vo.setBoardNo(Integer.parseInt(bno));
-		vo.setReply(replyer);
+		vo.setReply(reply);
 		vo.setReplyer(replyer);
 
 		ReplyService svc = new ReplyServiceImpl();
-		
+
 		Gson gson = new GsonBuilder().create();
-		
+
 		Map<String, Object> map = new HashMap<>();
-		
-		//한글 처리 해주기.
-		resp.setContentType("text/json;charset=utf-8");
-		
+
 		String json = null;
 		try {
 			if (svc.addReply(vo)) {
-				vo= svc.getReply(vo.getReplyNo());
+				vo = svc.getReply(vo.getReplyNo());
+
 				map.put("retCode", "OK");
 				map.put("vo", vo);
 				json = gson.toJson(map);
-				
+
 				resp.getWriter().print(json);
 			} else {
 				map.put("retCode", "NG");
 				json = gson.toJson(map);
-				
+
 				resp.getWriter().print(json);
 			}
 		} catch (IOException e) {

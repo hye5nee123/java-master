@@ -31,9 +31,12 @@ public class ReplyServiceImpl implements ReplyService {
 
 	@Override
 	public ReplyVO getReply(int replyNo) {
-		
 		return mapper.selectReply(replyNo);
 	}
-	
+
+	@Override
+	public List<ReplyVO> replyListPaging(int boardNo, int page) {
+		return mapper.replyListPaging(boardNo, page);
+	}
 
 }
