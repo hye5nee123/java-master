@@ -2,34 +2,40 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-  <head>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
+
+<head>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    google.charts.load('current', { 'packages': ['corechart'] });
+
+    let chartData = [
+      ['Name', 'countPerName']
+    ]; //[[],[],[]]
+    const xhtp = new XMLHttpRequest();
+    xhtp.open('get', 'replyCountJson.do');
+    xhtp.send();
+    xhtp.onload = function () {
+      let result = JSON.parse(xhtp.responseText);
+      result.forEach(item => {
+        chartData.push([item.name, item.cnt]);
+      })
       google.charts.setOnLoadCallback(drawChart);
+    }
 
-      function drawChart() {
+    function drawChart() {
+      var data = google.visualization.arrayToDataTable(chartData);
+      var options = {
+        title: 'My Daily Activities'
+      };
 
-        var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['Work',     11],
-          ['Eat',      2],
-          ['Commute',  2],
-          ['Watch TV', 2],
-          ['게임하기',    4],
-        ]);
+      var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+      chart.draw(data, options);
+    }
+  </script>
+</head>
 
-        var options = {
-          title: 'My Daily Activities'
-        };
+<body>
+  <div id="piechart" style="width: 900px; height: 500px;"></div>
+</body>
 
-        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-        chart.draw(data, options);
-      }
-    </script>
-  </head>
-  <body>
-    <div id="piechart" style="width: 900px; height: 500px;"></div>
-  </body>
 </html>

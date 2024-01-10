@@ -20,7 +20,7 @@
 	  join member m
 	  on r.replyer = m.id
 	  where board_no = #{boardNo}
-	  order by reply_no DESC
+	  order by 1 desc
 	 ) a ) b
 	 <![CDATA[
 	where b.rn > (#{page}-1)*5 and b.rn <= #{page}*5
@@ -50,11 +50,11 @@
     select count(*) from reply where board_no = #{boardNo}
   </select>
   
-   <select id="selectReplyCnt" resultType="hashmap" >
-    SELECT name  "name", count(*) "count"
-    FROM reply r
-    JOIN member m 
-    on r.replyer = m.id
-    GROUP BY name
+  <select id="selectReplyCnt" resultType="map">
+    select name "name", count(*) "cnt" 
+	from reply r
+	join member m
+	on r.replyer = m.id
+	group by name
   </select>
 </mapper>

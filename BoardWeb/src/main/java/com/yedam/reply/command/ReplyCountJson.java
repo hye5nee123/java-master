@@ -17,8 +17,9 @@ public class ReplyCountJson implements Control {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
+		// TODO Auto-generated method stub
 		ReplyService svc = new ReplyServiceImpl();
-		List<HashMap<String, Object>> list = svc.charData();
+		List<HashMap<String, Object>> list = svc.chartData();
 		Gson gson = new GsonBuilder().create();
 		resp.setContentType("text/json;charset=utf-8");
 		try {

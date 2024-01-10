@@ -22,7 +22,11 @@ import com.yedam.board.command.RemoveFormControl;
 import com.yedam.member.command.LoginControl;
 import com.yedam.member.command.LoginFormControl;
 import com.yedam.member.command.LogoutControl;
+import com.yedam.member.command.MemberAddJson;
+import com.yedam.member.command.MemberDelJson;
+import com.yedam.member.command.MemberListAjax;
 import com.yedam.member.command.MemberListControl;
+import com.yedam.member.command.MemberListJson;
 import com.yedam.reply.command.AddReplyJson;
 import com.yedam.reply.command.ChartForm;
 import com.yedam.reply.command.Covid19Form;
@@ -65,6 +69,12 @@ public class FrontController extends HttpServlet {
 
 		// 관리자.
 		map.put("/memberList.do", new MemberListControl());
+		map.put("/memberListAjax.do", new MemberListAjax());
+
+		// 회원관련데이터(json) 처리.
+		map.put("/memberListJson.do", new MemberListJson());
+		map.put("/memberAddJson.do", new MemberAddJson());
+		map.put("/memberDelJson.do", new MemberDelJson());
 
 		// tiles.관련...
 		map.put("/studentList.do", new StudentListCont());
@@ -76,16 +86,16 @@ public class FrontController extends HttpServlet {
 		map.put("/addReplyJson.do", new AddReplyJson());
 		// 페이지 생성하기 위한 json.
 		map.put("/pagingListJson.do", new PagingListJson());
-		//chart
+
+		// chart.
 		map.put("/chart.do", new ChartForm());
 		map.put("/replyCountJson.do", new ReplyCountJson());
-		
-		//코로나 19 관련.
-		map.put("/covid19.do", new Covid19Form());
-		
-		//지도.
-		map.put("/map.do", new MapForm());
 
+		// 코로나19 관련.
+		map.put("/covid19.do", new Covid19Form());
+
+		// 지도api.
+		map.put("/map.do", new MapForm());
 	}
 
 	@Override

@@ -46,8 +46,7 @@ public class ReplyServiceImpl implements ReplyService {
 	}
 
 	@Override
-	public List<HashMap<String, Object>> charData() {
-
+	public List<HashMap<String, Object>> chartData() {
 		return mapper.selectReplyCnt();
 	}
 

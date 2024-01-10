@@ -2,7 +2,6 @@
  * service.js
  */
 function makeLi(reply = {}) {
-	console.log(reply)
 	// start.
 	let li = document.createElement('li');
 	let span = document.createElement('span');
@@ -17,27 +16,21 @@ function makeLi(reply = {}) {
 
 	// 삭제버튼.
 	let btn = document.createElement('button');
-	btn.addEventListener('click', async function () {
-	// ==btn.onclick = sync function(){
-		//fetch함수.
-		const promise = await fetch('delReplyJson.do?rno=' + reply.replyNo)
-		const json = promise.json();
+	btn.addEventListener('click', async function() {
+		// 댓글번호 삭제 후 화면에서 제거.
+		const promise = await fetch('delReplyJson.do?rno=' + reply.replyNo);
+		const json = await promise.json();
 		try {
-
-			//console.log(json)
-
-			if (result.retCode == 'OK') {
-				alert('처리성공');
+			if (json.retCode == 'OK') {
+				alert('삭제됨.');
 				showList(pageInfo);
 			} else if (result.retCode == 'NG') {
-				alert('처리중 에러')
+				alert('처리중 에러.');
 			}
 		} catch (err) {
-			console.log('예외=>',err)
+			console.error('예외=>', err)
 		}
 	}, true);
-		
-
 
 	btn.innerText = '삭제';
 	li.appendChild(btn);  // end.

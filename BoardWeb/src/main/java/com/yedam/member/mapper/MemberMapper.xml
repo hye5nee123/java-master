@@ -8,9 +8,18 @@
   <select id="selectMember" resultType="member">
     select * from member where id=#{id} and pw=#{pw}
   </select>
-  
+
   <select id="selectList" resultType="member">
-    select * from member
+    select * from member order by 1
   </select>
-  
+
+  <insert id="insertMember" parameterType="member">
+    insert into member 
+    values(#{id}, #{pw}, #{name}, #{responsibility}, #{image})
+  </insert>
+
+  <delete id="deleteMember" parameterType="string">
+    delete from member where id = #{id}
+  </delete>
+
 </mapper>

@@ -11,9 +11,9 @@ import com.yedam.reply.serviceImpl.ReplyServiceImpl;
 public class MainExe {
 	public static void main(String[] args) {
 		ReplyService svc = new ReplyServiceImpl();
-		List<HashMap<String, Object>> list = svc.charData();
+		List<HashMap<String, Object>> list = svc.chartData();
 		Gson gson = new GsonBuilder().create();
-		
 		System.out.println(gson.toJson(list));
+
 	}
 }

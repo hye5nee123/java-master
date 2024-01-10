@@ -12,10 +12,10 @@ public class Covid19Form implements Control {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
+		// TODO Auto-generated method stub
 		try {
 			req.getRequestDispatcher("board/covid19.tiles").forward(req, resp);
 		} catch (ServletException | IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
