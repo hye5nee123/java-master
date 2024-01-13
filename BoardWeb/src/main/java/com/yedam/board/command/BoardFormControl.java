@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.yedam.common.Control;
 
 public class BoardFormControl implements Control {
-
+//ㅇ
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
 		// 등록화면 open.
